@@ -4,13 +4,13 @@
 
 ### What I changed
 
-**Story 1 — Wired up the data access layer**
+**Story 1 - Wired up the data access layer**
 
-Introduced a `ProductService` (behind `IProductService`) that takes `IDataAccess<Product>` via constructor injection. The controller delegates entirely to the service — no business logic in the controller. Both `ProductAccess` and `ProductService` are registered as scoped dependencies in `Startup.cs`.
+Introduced a `ProductService` (behind `IProductService`) that takes `IDataAccess<Product>` via constructor injection. The controller delegates entirely to the service, no business logic in the controller. Both `ProductAccess` and `ProductService` are registered as scoped dependencies in `Startup.cs`.
 
-**Story 2 — Euro pricing as a separate endpoint**
+**Story 2 - Euro pricing as a separate endpoint**
 
-Rather than modifying the existing `/product` endpoint, I added a dedicated `GET /product/euros` endpoint that returns a `ProductEuroResponse` DTO with prices converted at the 1 GBP = 1.11 EUR rate. Keeping the endpoints separate preserves the existing contract and makes the currency concern explicit. The exchange rate is a named constant (`GbpToEurRate`) in the service — no magic numbers.
+Rather than modifying the existing `/product` endpoint, I added a dedicated `GET /product/euros` endpoint that returns a `ProductEuroResponse` DTO with prices converted at the 1 GBP = 1.11 EUR rate. Keeping the endpoints separate preserves the existing contract and makes the currency concern explicit. The exchange rate is a named constant (`GbpToEurRate`) in the service, no magic numbers.
 
 ### Project structure
 
