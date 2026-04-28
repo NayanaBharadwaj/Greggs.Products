@@ -20,7 +20,6 @@ public class ProductController : ControllerBase
         _productService = productService;
     }
 
-    /// <summary>Returns a paginated list of products with prices in GBP.</summary>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Product>), 200)]
     public IEnumerable<Product> Get(int pageStart = 0, int pageSize = 5)
@@ -28,7 +27,6 @@ public class ProductController : ControllerBase
         return _productService.GetProducts(pageStart, pageSize);
     }
 
-    /// <summary>Returns a paginated list of products with prices converted to EUR.</summary>
     [HttpGet("euros")]
     [ProducesResponseType(typeof(IEnumerable<ProductEuroResponse>), 200)]
     public IEnumerable<ProductEuroResponse> GetInEuros(int pageStart = 0, int pageSize = 5)
